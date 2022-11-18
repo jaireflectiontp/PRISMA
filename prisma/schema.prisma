@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+}
+
+model team {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  bats        String
+  bowls       String
+  format      String
+  matches     Int
+  innings     Int
+  runs        Int
+  high_score  Int
+  avg         Float
+  fifty       Int
+  century     Int
+  strike_rate Float
+  overs       Float
+  wkts        Int
+  economy     Float
+}
